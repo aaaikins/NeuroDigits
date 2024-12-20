@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroDigits</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>NeuroDigits</h1>
+
+    <button id="theme-toggle">Dark Mode</button>
+
+    <div class="canvas-container">
+        <canvas id="canvas" width="280" height="280"></canvas>
+    </div>
+
+    <div class="controls">
+        <div class="control-group">
+            <label class="control-label">
+                Brush Color:
+                <input type="color" id="brush-color" value="#000000">
+            </label>
+            <label class="control-label">
+                Brush Size:
+                <input type="range" id="brush-size" min="1" max="20" value="10">
+            </label>
+        </div>
+        <div class="control-group">
+            <button id="clear-btn">Clear</button>
+            <button id="predict-btn">Predict</button>
+            <button id="download-btn">Download</button>
+        </div>
+    </div>
+
+    <div id="spinner" class="spinner"></div>
+    <div id="result" class="results-container"></div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
