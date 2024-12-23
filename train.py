@@ -14,7 +14,6 @@ from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 X_train = X_train.astype(np.float32)/255
 X_test = X_test.astype(np.float32)/255
 
-
 # Add channel dimension (28x28x1)
 X_train = np.expand_dims(X_train, -1)
 X_test = np.expand_dims(X_test, -1)
@@ -23,34 +22,23 @@ X_test = np.expand_dims(X_test, -1)
 y_train = tf.keras.utils.to_categorical(y_train)
 y_test = tf.keras.utils.to_categorical(y_test)
 
-
 model = Sequential()
 
 model.add(Conv2D(32,(3,3), input_shape=(28,28,1), activation='relu'))
 model.add(MaxPool2D((2,2)))
-
 model.add(Conv2D(64,(3,3), activation='relu'))
 model.add(MaxPool2D((2,2)))
-
-# Flatten the 2D output for dense layers
 model.add(Flatten())
-
 model.add(Dense(128, activation='relu'))
-# Add dropout to prevent overfitting
 model.add(Dropout(0.3))
-
 model.add(Dense(10, activation='softmax'))
 
 
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=["accuracy"])
 
-
 # Set up callbacks for training
 es = EarlyStopping(monitor='val_accuracy', min_delta=0.01, patience=5, verbose=1, mode='max')
-
-
 mc = ModelCheckpoint('Aikins_cnn_model.keras', monitor='val_accuracy', verbose=1, save_best_only=True, mode='max')
-
 
 cb = [es, mc]
 
