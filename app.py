@@ -1,5 +1,5 @@
 import json
-import tensorflow as tf
+from tensorflow.keras.models import load_model
 from flask import Flask, render_template, request
 from PIL import Image
 import numpy as np
@@ -9,7 +9,7 @@ import io
 app = Flask(__name__)
 
 # Load the Keras model
-model = tf.keras.models.load_model("model/cnn_model.keras")
+model = load_model("model/cnn_model.keras")
 
 @app.route("/")
 def index():
