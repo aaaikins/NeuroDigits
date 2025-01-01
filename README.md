@@ -17,7 +17,7 @@ The application is powered by Flask for the backend and TensorFlow for the ML mo
 Click the link above to try the app live! Here's a quick preview:
 
 ### **Screenshot**
-![App Screenshot](demo/neurodigits_demo.mov)
+![App Screenshot](demo/neurodigits_demo.gif)
 
 ## Setup Instructions
 
