@@ -12,7 +12,12 @@ The application is powered by Flask for the backend and TensorFlow for the ML mo
 
 ## Demo
 
-Include a screenshot or GIF of your app in action here.
+🚀 **[Live Demo on Vercel](https://neuro-digits.vercel.app/)**
+
+Click the link above to try the app live! Here's a quick preview:
+
+### **Screenshot**
+![App Screenshot](demo/Screen Recording 2025-01-01 at 11.19.27 AM.mov)
 
 ## Setup Instructions
 
