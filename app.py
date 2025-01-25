@@ -33,16 +33,15 @@ def predict_digit():
         # Normalize to [0, 1] and invert colors (MNIST has white digits on black background)
         img_array = 1 - (img_array / 255.0)
         
-        # Optional: Threshold the image to make it more similar to MNIST
         # This helps remove grey pixels and make the digit more defined
         img_array = (img_array > 0.3).astype(np.float32)
         
         # Add required dimensions for the model
-        img_array = np.expand_dims(img_array, axis=-1)  # Add channel dimension
-        img_array = np.expand_dims(img_array, axis=0)   # Add batch dimension
+        img_array = np.expand_dims(img_array, axis=-1)
+        img_array = np.expand_dims(img_array, axis=0)
         
         # Make prediction
-        predictions = model.predict(img_array, verbose=0)  # Disable prediction messages
+        predictions = model.predict(img_array, verbose=0)
         predicted_class = np.argmax(predictions[0])
         confidence = float(predictions[0][predicted_class])
         
