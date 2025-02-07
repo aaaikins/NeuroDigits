@@ -10,15 +10,12 @@ from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 
-# Normalize pixel values to [0, 1]
 X_train = X_train.astype(np.float32)/255
 X_test = X_test.astype(np.float32)/255
 
-# Add channel dimension (28x28x1)
 X_train = np.expand_dims(X_train, -1)
 X_test = np.expand_dims(X_test, -1)
 
-# One-hot encoding of labels
 y_train = tf.keras.utils.to_categorical(y_train)
 y_test = tf.keras.utils.to_categorical(y_test)
 

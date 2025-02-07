@@ -8,7 +8,6 @@ import io
 
 app = Flask(__name__)
 
-# Load the Keras model
 model = load_model("model/cnn_model.keras")
 
 @app.route("/")
@@ -27,7 +26,7 @@ def predict_digit():
         img = Image.open(io.BytesIO(image_bytes)).convert('L')
         
         # Preprocess the image
-        img = img.resize((28, 28))  # Resize to 28x28
+        img = img.resize((28, 28))
         img_array = np.array(img)
         
         # Normalize to [0, 1] and invert colors (MNIST has white digits on black background)
@@ -48,8 +47,8 @@ def predict_digit():
         # Return prediction results
         return json.dumps({
             'predicted_label': int(predicted_class),
-            'confidence': confidence * 100,  # Convert to percentage
-            'probabilities': [float(p) * 100 for p in predictions[0]]  # All class probabilities
+            'confidence': confidence * 100,
+            'probabilities': [float(p) * 100 for p in predictions[0]]
         })
         
     except Exception as e:
